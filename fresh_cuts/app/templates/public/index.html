@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<header class="hero text-white">
+    <div class="container">
+        <h1 class="display-3 fw-bold">Legacy & Style</h1>
+        <p class="lead mb-4">Experience the art of grooming at Fresh Cuts.</p>
+        <a href="{{ url_for('main.book') }}" class="btn btn-primary btn-lg px-5">Book Appointment</a>
+    </div>
+</header>
+
+<!-- About Section -->
+<section class="py-5 bg-dark">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h2 class="section-title">Our Story</h2>
+                <p class="text-white-50">
+                    Fresh Cuts has been serving the community with precision cuts and classic shaves for over a decade.
+                    We combine traditional techniques with modern style to give you the perfect look.
+                    Walk-ins are welcome, but appointments are recommended.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Services -->
+<section class="py-5 bg-secondary">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">Popular Services</h2>
+        <div class="row g-4">
+            {% for service in services[:3] %}
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    {% if service.image_url %}
+                    <img src="{{ service.image_url }}" class="card-img-top" alt="{{ service.name }}"
+                        style="height: 250px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">{{ service.name }}</h5>
+                        <p class="card-text text-muted">{{ service.description }}</p>
+                        <h4 class="fw-bold my-3">${{ service.price }}</h4>
+                        <a href="{{ url_for('main.book', service_id=service.id) }}"
+                            class="btn btn-outline-light btn-sm">Book This</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-5">
+            <a href="{{ url_for('main.services') }}" class="btn btn-link text-primary text-decoration-none">View All
+                Services &rarr;</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
