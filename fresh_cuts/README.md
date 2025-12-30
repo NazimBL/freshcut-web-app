@@ -26,11 +26,7 @@ A premium, Flask-based booking system for barbershops.
     ```
     Access the app at `http://127.0.0.1:5000`.
 
-## Admin Access
-- **Login URL**: `http://127.0.0.1:5000/admin/dashboard`
-- **Default Credentials**:
-    - Username: `admin`
-    - Password: `password123`
+
 
 ## Deployment
 To deploy this application to a production server (e.g., Render, Heroku, DigitalOcean):
